@@ -18,6 +18,8 @@ import cv2
 WARNED = False
 
 def loadCam(args, id, cam_info, resolution_scale, is_nerf_synthetic, is_test_dataset):
+    # The nnext line is added by Domonkos Veress on 17.02.2026 to adress a weird duplicate path bug
+    cam_info.image_path = cam_info.image_path.replace("images/images", "images")
     image = Image.open(cam_info.image_path)
 
     if cam_info.depth_path != "":
